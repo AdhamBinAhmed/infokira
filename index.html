@@ -91,6 +91,43 @@ h1 {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
+.call-us-bottom {
+  position: fixed;
+  bottom: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  animation: slideUp 1.2s ease;
+  z-index: 1000;
+}
+
+.call-us-bottom span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+.call-us-bottom a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.call-us-bottom a:hover {
+  color: #ffd9ff;
+  letter-spacing: 1px;
+}
+
+
+
 </style>
 </head>
 
@@ -111,6 +148,11 @@ h1 {
     <a href="https://www.tiktok.com/@kira.decoration4" class="link-btn">TikTok</a>
     <a href="https://www.facebook.com/decorkira" class="link-btn">Facebook</a>
   </div>
+
+<div class="call-us-bottom">
+  <span>📞 Call Us</span>
+  <a href="tel:+201112801502">+20 1112801502</a>
+</div>
 
 </div>
 
