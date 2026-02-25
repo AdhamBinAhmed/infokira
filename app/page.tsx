@@ -40,7 +40,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="cta">
-       <a href="https://wa.me/+201112801502">💬 Contact Us</a>
+    <a href="tel:+201112801502">+20 1112801502</a>
         <h2>Start your dream design now ✨</h2>
 
       </section>
