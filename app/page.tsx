@@ -1,31 +1,50 @@
-export default function Home() {
-  return (
-    <>
-      <div className="container">
+"use client";
+import "./style.css";
+import { useEffect, useState } from "react";
 
-        {/* Logo */}
-        <img src="/logo.png" alt="KIRA Logo" className="logo" />
+export default function Home() {
+  const texts = ["Modern Designs", "Luxury Touch", "Creative Ideas"];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % texts.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <main className="main">
+
+      <div className="bg"></div>
+
+      <section className="card">
+
+        <img src="/logo.png" alt="logo" className="logo" />
 
         <h1>KiraDecorations</h1>
+
         <p className="tagline">
-          ✨ Creative designs for your space! <br />
-          Let’s make it beautiful together ✨
+          {texts[index]} ✨
         </p>
 
-        {/* Links */}
-        <a href="https://wa.me/+201112801502" className="link-btn">WhatsApp</a>
-        <a href="https://www.instagram.com/kira.decoration/" className="link-btn">Instagram</a>
-        <a href="https://www.tiktok.com/@kira.decoration4" className="link-btn">TikTok</a>
-        <a href="https://www.facebook.com/decorkira" className="link-btn">Facebook</a>
-        <a href="https://maps.app.goo.gl/PRAx1nZA2jNb678h7?g_st=aw" className="link-btn">Our Location</a>
+        <div className="buttons">
+          <a href="https://wa.me/+201112801502"> WhatsApp</a>
+          <a href="https://www.instagram.com/kira.decoration/"> Instagram</a>
+          <a href="https://www.tiktok.com/@kira.decoration4"> TikTok</a>
+          <a href="https://www.facebook.com/decorkira"> Facebook</a>
+          <a href="https://maps.app.goo.gl/PRAx1nZA2jNb678h7"> Location</a>
+        </div>
 
-      </div>
+      </section>
 
-      {/* Call Section */}
-      <div className="call-us-bottom">
-        <span>📞 Call Us</span>
-        <a href="tel:+201112801502">+20 1112801502</a>
-      </div>
-    </>
-  )
+      {/* CTA */}
+      <section className="cta">
+       <a href="https://wa.me/+201112801502">💬 Contact Us</a>
+        <h2>Start your dream design now ✨</h2>
+
+      </section>
+
+    </main>
+  );
 }
