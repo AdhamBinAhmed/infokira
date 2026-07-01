@@ -25,7 +25,7 @@ export default function SocialCard({ title, link, index, icon, color, descriptio
         {icon}
       </div>
       
-      <div className="flex flex-col flex-1 text-left z-10">
+      <div className="flex flex-col flex-1 text-start z-10">
         <span className="font-semibold text-white tracking-wide">{title}</span>
         {description && <span className="text-sm text-gray-400">{description}</span>}
       </div>
