@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  /* Editorial "paper" palette */
+  --paper: #f2ede2;
+  --paper-2: #e9e2d3;
+  --ink: #17150f;
+  --ink-soft: #4a463c;
+  --muted: #837c6d;
+  --line: #d8cfbd;
+  --clay: #b4462f;
+  --clay-deep: #8f3421;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-clay: var(--clay);
+  --color-clay-deep: var(--clay-deep);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Fraunces lacks Arabic glyphs, so Kufi picks up Arabic runs automatically */
+  --font-display: var(--font-fraunces), var(--font-kufi), Georgia, serif;
+  --font-arabic: var(--font-kufi), var(--font-inter), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  /* subtle paper grain */
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(23, 21, 15, 0.035) 1px,
+      transparent 0
+    );
+  background-size: 4px 4px;
+}
+
+::selection {
+  background: var(--clay);
+  color: var(--paper);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+[dir="rtl"] .font-display {
+  font-family: var(--font-arabic);
+}
