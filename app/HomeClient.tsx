@@ -13,7 +13,6 @@ import {
   FaMapMarkerAlt,
   FaTiktok,
 } from "react-icons/fa";
-import SocialCard from "./SocialCard";
 import type { MediaItem } from "./lib/works";
 
 export default function HomeClient({
@@ -194,6 +193,71 @@ export default function HomeClient({
         </div>
       </section>
 
+      {/* ── Connect (full-bleed clay band) ───────── */}
+      <section id="connect" className="mt-16 bg-clay text-paper sm:mt-24">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          {/* Statement */}
+          <div className="flex flex-col">
+            <span className="mb-5 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-paper/70">
+              {t.connect}
+              <span className="h-px w-8 bg-paper/40" />
+            </span>
+            <h2 className="font-display text-[clamp(2.4rem,6vw,4rem)] font-light leading-[0.95] tracking-tight">
+              {isAr ? "لنصنع شيئًا " : "Let's create something "}
+              <span className="italic">{isAr ? "جميلًا معًا" : "beautiful together"}</span>.
+            </h2>
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-paper/85">
+              {isAr
+                ? "راسلنا على أي منصة تفضّلها — نردّ عادةً خلال ساعات."
+                : "Reach out on whichever platform you prefer — we usually reply within hours."}
+            </p>
+            <div className="mt-8 hidden items-center gap-3 text-xs uppercase tracking-[0.18em] text-paper/70 lg:flex">
+              <span>{isAr ? "القاهرة، مصر" : "Cairo, Egypt"}</span>
+              <span className="h-px w-6 bg-paper/40" />
+              <span>{t.est}</span>
+            </div>
+          </div>
+
+          {/* Directory rows */}
+          <ul className="lg:pt-2">
+            {links.map((l, i) => (
+              <motion.li
+                key={l.title}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: i * 0.05, ease: "easeOut" }}
+              >
+                <a
+                  href={l.link}
+                  target={l.link.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 border-t border-paper/25 py-4 sm:gap-4 sm:py-5"
+                >
+                  <span className="w-6 font-display text-sm tabular-nums text-paper/55">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="shrink-0 text-paper/85 transition-transform duration-300 group-hover:scale-110">
+                    {l.icon}
+                  </span>
+                  <span className="font-display text-2xl leading-none tracking-tight transition-transform duration-300 group-hover:translate-x-1 sm:text-[1.9rem] rtl:group-hover:-translate-x-1">
+                    {l.title}
+                  </span>
+                  <span className="mx-1 hidden h-px flex-1 self-center border-b border-dotted border-paper/40 opacity-70 transition-opacity duration-300 group-hover:opacity-100 sm:block" />
+                  <span className="hidden shrink-0 text-sm text-paper/70 sm:inline">
+                    {l.handle}
+                  </span>
+                  <span className="ms-auto shrink-0 text-paper/60 transition-all duration-300 group-hover:translate-x-1 group-hover:text-paper sm:ms-0 rtl:group-hover:-translate-x-1">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+                  </span>
+                </a>
+              </motion.li>
+            ))}
+            <li className="border-t border-paper/25" />
+          </ul>
+        </div>
+      </section>
+
       {/* ── Selected Work ────────────────────────── */}
       {featured.length > 0 && (
         <section className="mx-auto mt-16 max-w-6xl px-5 sm:mt-24 sm:px-8">
@@ -245,53 +309,6 @@ export default function HomeClient({
           </div>
         </section>
       )}
-
-      {/* ── Connect ──────────────────────────────── */}
-      <section id="connect" className="mx-auto mt-16 max-w-6xl px-5 sm:mt-24 sm:px-8">
-        <div className="flex items-end justify-between border-t border-ink pt-3">
-          <h2 className="font-display text-2xl italic sm:text-3xl">
-            {t.connect}
-          </h2>
-          <span className="hidden text-xs uppercase tracking-[0.2em] text-muted sm:inline">
-            {isAr ? "الدليل" : "Directory"}
-          </span>
-        </div>
-
-        <div className="mt-6 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-          {links.map((l, i) => (
-            <SocialCard
-              key={l.title}
-              index={i + 1}
-              title={l.title}
-              handle={l.handle}
-              link={l.link}
-              icon={l.icon}
-            />
-          ))}
-
-          {/* Closing CTA cell */}
-          <a
-            href="https://wa.me/201112801502"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex flex-col justify-between bg-clay p-5 text-paper sm:p-6 lg:col-span-2"
-          >
-            <span className="font-display text-sm tabular-nums text-paper/70">
-              {isAr ? "لنبدأ" : "Let's talk"}
-            </span>
-            <span className="mt-6 flex items-end justify-between gap-3">
-              <span className="font-display text-2xl italic leading-tight sm:text-[1.7rem]">
-                {isAr
-                  ? "جاهزون لتصميم مساحتك القادمة."
-                  : "Ready to design your next space."}
-              </span>
-              <span className="shrink-0 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </span>
-            </span>
-          </a>
-        </div>
-      </section>
 
       {/* ── Footer ───────────────────────────────── */}
       <footer className="mx-auto mt-16 flex max-w-6xl flex-col items-center gap-2 px-5 py-10 text-center sm:mt-24 sm:px-8">
