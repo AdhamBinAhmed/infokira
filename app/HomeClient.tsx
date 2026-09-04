@@ -13,6 +13,7 @@ import {
   FaMapMarkerAlt,
   FaTiktok,
 } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 import type { MediaItem } from "./lib/works";
 
 export default function HomeClient({
@@ -110,12 +111,15 @@ export default function HomeClient({
         <span className="font-display text-xs uppercase tracking-[0.22em] text-ink-soft sm:text-sm">
           {t.kicker}
         </span>
-        <button
-          onClick={toggleLang}
-          className="rounded-full border border-line px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-paper"
-        >
-          {isAr ? "EN" : "ع"}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleLang}
+            className="rounded-full border border-line px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-paper"
+          >
+            {isAr ? "EN" : "ع"}
+          </button>
+          <ThemeToggle />
+        </div>
       </header>
 
       <div className="border-t border-line" />
@@ -175,13 +179,13 @@ export default function HomeClient({
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-paper-2">
+            <div className="relative aspect-[4/5] w-full overflow-hidden">
               <Image
-                src="/bg1.jpg"
+                src="/bg1.png"
                 alt="Kira Decoration"
                 fill
                 priority
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
             </div>
@@ -194,7 +198,12 @@ export default function HomeClient({
       </section>
 
       {/* ── Connect (full-bleed clay band) ───────── */}
-      <section id="connect" className="mt-16 bg-clay text-paper sm:mt-24">
+      {/* Lock "paper" to cream here so the band reads the same in light & dark */}
+      <section
+        id="connect"
+        style={{ ["--paper" as string]: "#f4efe4" } as React.CSSProperties}
+        className="mt-16 bg-clay text-paper sm:mt-24"
+      >
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           {/* Statement */}
           <div className="flex flex-col">

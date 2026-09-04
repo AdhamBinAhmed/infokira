@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Editorial "paper" palette */
+  /* Editorial "paper" palette — light (default) */
   --paper: #f2ede2;
   --paper-2: #e9e2d3;
   --ink: #17150f;
@@ -10,6 +10,35 @@
   --line: #d8cfbd;
   --clay: #b4462f;
   --clay-deep: #8f3421;
+  --grain: rgba(23, 21, 15, 0.035);
+}
+
+/* Dark — applied when the toggle/system resolves to dark */
+:root[data-theme="dark"] {
+  --paper: #14120c;
+  --paper-2: #201c14;
+  --ink: #f2ede2;
+  --ink-soft: #cfc7b5;
+  --muted: #8f8778;
+  --line: #322d22;
+  --clay: #d15c40;
+  --clay-deep: #b4462f;
+  --grain: rgba(242, 237, 226, 0.03);
+}
+
+/* Fallback for no-JS: honour the OS setting */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14120c;
+    --paper-2: #201c14;
+    --ink: #f2ede2;
+    --ink-soft: #cfc7b5;
+    --muted: #8f8778;
+    --line: #322d22;
+    --clay: #d15c40;
+    --clay-deep: #b4462f;
+    --grain: rgba(242, 237, 226, 0.03);
+  }
 }
 
 @theme inline {
@@ -36,12 +65,13 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
+  transition: background-color 0.4s ease, color 0.4s ease;
   /* subtle paper grain */
   background-image: radial-gradient(
-      circle at 1px 1px,
-      rgba(23, 21, 15, 0.035) 1px,
-      transparent 0
-    );
+    circle at 1px 1px,
+    var(--grain) 1px,
+    transparent 0
+  );
   background-size: 4px 4px;
 }
 

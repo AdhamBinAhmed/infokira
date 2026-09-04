@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import ThemeToggle from "../ThemeToggle";
 import type { MediaItem } from "../lib/works";
 
 export default function WorksClient({ items }: { items: MediaItem[] }) {
@@ -55,12 +56,15 @@ export default function WorksClient({ items }: { items: MediaItem[] }) {
         <span className="hidden font-display text-xs uppercase tracking-[0.22em] text-ink-soft sm:inline sm:text-sm">
           {t.kicker}
         </span>
-        <button
-          onClick={toggleLang}
-          className="rounded-full border border-line px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-paper"
-        >
-          {isAr ? "EN" : "ع"}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleLang}
+            className="rounded-full border border-line px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-paper"
+          >
+            {isAr ? "EN" : "ع"}
+          </button>
+          <ThemeToggle />
+        </div>
       </header>
 
       <div className="border-t border-line" />
@@ -141,11 +145,11 @@ export default function WorksClient({ items }: { items: MediaItem[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/95 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
             onClick={() => setSelected(null)}
           >
             <button
-              className="absolute right-5 top-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors hover:bg-paper hover:text-ink"
+              className="absolute right-5 top-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:bg-white hover:text-black"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(null);
