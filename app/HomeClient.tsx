@@ -44,7 +44,7 @@ export default function HomeClient({
     name1: isAr ? "كيرا" : "Kira",
     name2: isAr ? "للديكور" : "Decoration",
     lead: isAr
-      ? "نصمّم مساحات وحفلات لا تُنسى — من الفكرة إلى آخر تفصيلة."
+      ? "نصمّم مساحات لا تُنسى — من الفكرة إلى آخر تفصيلة."
       : "We design unforgettable spaces & events — from the first idea to the final detail.",
     contactUs: isAr ? "تواصل معنا" : "Get in touch",
     selectedWork: isAr ? "أعمال مختارة" : "Selected Work",
